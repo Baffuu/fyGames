@@ -1,3 +1,5 @@
+// Event Listener for the before unload warning 
+
 window.addEventListener("beforeunload", function (e) {
     var confirmationMessage = 'It looks like you have been editing something. '
                             + 'If you leave before saving, your changes will be lost.';
