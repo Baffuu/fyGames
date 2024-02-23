@@ -30,67 +30,86 @@
         
     </head>
     <body>
+        <script>
+            var isMoving = false;
+            var SetIsMoving = function () { isMoving = true };
+
+            window.addEventListener("beforeunload", function (e) {
+                if (isMoving) {
+                    return undefined;
+                }
+                var confirmationMessage = '.';
+
+                (e || window.event).returnValue = confirmationMessage;
+                return confirmationMessage;
+            });
+
+            var Move = function (link) {
+                SetIsMoving();
+                window.location.href = link;
+            }
+        </script>
         <div class="purple-filling-box">
             <h1 class="text">game selector menu i guess | MBFY</h1>
         </div>
 
         <div class="container-but">
-            <button class="cybr-btn" onclick="window.location.href='./games/ovoT.html'"> 
+            <button class="cybr-btn" onclick="Move('./games/ovoT.html')"> 
                 Modded OvO<span aria-hidden>_</span>
                 <span aria-hidden class="cybr-btn__glitch">OwO OwO OwO</span>
                 <span aria-hidden class="cybr-btn__tag">v1.4.4</span>
             </button>
 
-            <button class="cybr-btn" onclick="window.location.href='./games/ovoT-1.4.html'">
+            <button class="cybr-btn" onclick="Move('./games/ovoT-1.4.html')">
                 Modded OvO <span aria-hidden>_</span>
                 <span aria-hidden class="cybr-btn__glitch">Old Version</span>
                 <span aria-hidden class="cybr-btn__tag">v1.4</span>
             </button>
 
-            <button class="cybr-btn" onclick="window.location.href='./games/skycrypt.html'">
+            <button class="cybr-btn" onclick="Move('./games/skycrypt.html')">
                 ScyCrypt<span aria-hidden>_</span>
                 <span aria-hidden class="cybr-btn__glitch">made for nerds</span>
                 <span aria-hidden class="cybr-btn__tag">sky.shiiyu.moe</span>
             </button>
 
-            <button class="cybr-btn" onclick="window.location.href='./games/mountaingames.html'">
+            <button class="cybr-btn" onclick="Move('./games/mountaingames.html')">
                 Mountain Games<span aria-hidden>_</span>
                 <span aria-hidden class="cybr-btn__glitch">This website is weird ngl</span>
                 <span aria-hidden class="cybr-btn__tag">r25</span>
             </button>
 
-            <button class="cybr-btn" onclick="window.location.href='https://vscode.dev/'">
+            <button class="cybr-btn" onclick="Move('https://vscode.dev/')">
                 Visual Studio Web<span aria-hidden>_</span>
                 <span aria-hidden class="cybr-btn__glitch">best code editor</span>
                 <span aria-hidden class="cybr-btn__tag">r46</span>
             </button>
 
-            <button class="cybr-btn" onclick="window.location.href='./games/twoplayergames.html'">
+            <button class="cybr-btn" onclick="Move('./games/twoplayergames.html')">
                 Two Player Games<span aria-hidden>_</span>
                 <span aria-hidden class="cybr-btn__glitch">you have friends?</span>
                 <span aria-hidden class="cybr-btn__tag">*_*</span>
             </button>
 
-            <button class="cybr-btn" onclick="window.location.href='./games/minesweeper.html'">
+            <button class="cybr-btn" onclick="Move('./games/minesweeper.html')">
                 Minesweeper<span aria-hidden>_</span>
                 <span aria-hidden class="cybr-btn__glitch">best game ever</span>
                 <span aria-hidden class="cybr-btn__tag">online</span>
             </button>
 
             <!--<button class="butont" onclick="window.location.href='./games/index.html'">Placeholder</button>-->
-            <button class="cybr-btn" onclick="window.location.href='./games/tgc.html'">
+            <button class="cybr-btn" onclick="Move('./games/tgc.html')">
                 TGC<span aria-hidden>_</span>
                 <span aria-hidden class="cybr-btn__glitch">the game collection</span>
                 <span aria-hidden class="cybr-btn__tag">sock</span>
             </button>
 
-            <button class="cybr-btn" onclick="window.location.href='./games/gsearch.html'">
+            <button class="cybr-btn" onclick="Move('./games/gsearch.html')">
                 iframe search<span aria-hidden>_</span>
                 <span aria-hidden class="cybr-btn__glitch">iframe search_</span>
                 <span aria-hidden class="cybr-btn__tag">some websites dont work</span>
             </button>
 
-            <button class="cybr-btn" onclick="window.location.href='./games/buritobison.html'">
+            <button class="cybr-btn" onclick="Move('./games/buritobison.html')">
                 Burito Bison<span aria-hidden>_</span>
                 <span aria-hidden class="cybr-btn__glitch">zayaruzostreetorgan</span>
                 <span aria-hidden class="cybr-btn__tag">who</span>
