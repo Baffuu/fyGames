@@ -5,6 +5,25 @@
     transition: 0.5s ease-in-out;
 }
 
+h1 {
+  background-color: #0000;
+  color: black;
+  text-align: center;
+  box-sizing: 45px;
+  font-size: 35px;
+  height: 60px;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  line-height: 1.0;
+  min-height: var(--viewport-height);
+  background-image: linear-gradient(to top, rgba(24, 13, 105, 0.471), rgba(24, 13, 105, 0.471)), url("assets/background.jpg");
+}
+
 @media (min-width: 600px) {
     .wrap {
         width: 50%;
@@ -59,7 +78,9 @@ html, body, div, span, iframe, h1, h2, h3, h4, h5, p, i, a {
 .purple-filling-box {
     position: absolute;
     background-color: purple;
-    height: 50px;
+    top: 1em;
+    margin-top: -20px;
+    height: 80px;
     width: 100%;
 }
 

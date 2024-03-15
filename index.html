@@ -8,30 +8,22 @@
         <link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
         
         <link rel="stylesheet" href="./style.css">
-        <style>
-            html {
-                font-size: 18px;
-            }
-
-            body {
-                line-height: 1.0;
-                min-height: var(--viewport-height);
-                background-image: linear-gradient(to top, rgba(24, 13, 105, 0.471), rgba(24, 13, 105, 0.471)), url("assets/background.jpg");
-            }
-            h1 {
-                background-color: #0000;
-                color: black;
-                text-align: center;
-                box-sizing: 45px;
-                font-size: 35px;
-                height: 60px;
-            }
-        </style>
         
     </head>
     <body>
         <script>
-            var isMoving = false;
+            function AddButton(url, title, glitch=null, tag="R%^$", iframe=true) {
+                glitch = glitch == null ? (title).split("").reverse().join(""): glitch; // if glitch was not provided, make the glitch be reversed title
+                const buttons = document.getElementById("buttons");
+                buttons.innerHTML += `<button class="cybr-btn" onclick="Move('${url}', ${iframe})">
+                                        ${title}<span aria-hidden>_</span>
+                                        <span aria-hidden class="cybr-btn__glitch">${glitch}</span>
+                                        <span aria-hidden class="cybr-btn__tag">${tag}</span>
+                                    </button>`;
+                return true;
+            }
+
+            let isMoving = false;
             var SetIsMoving = function () { isMoving = true };
 
             window.addEventListener("beforeunload", function (e) {
@@ -44,77 +36,45 @@
                 return confirmationMessage;
             });
 
-            var Move = function (link) {
+            var Move = function (link, iframe=true) {
                 SetIsMoving();
-                window.location.href = link;
-            }
+
+                if (!iframe){
+                    window.open(link, "_blank");
+                    return
+                }
+
+                window.open("about:blank", "blank").document.write(`
+                    <!DOCTYPE html>
+                    <html>
+                        <head>
+                            <title>mbfy</title>
+                        </head>
+                        <body> 
+                            <script src='./unload.js'><\/script>
+                            <iframe src='${link}' width=100% height=100% title="box" allowfullscreen="true" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;"></iframe>
+                        </body>
+                    </html>
+                `)
+            }            
         </script>
+
         <div class="purple-filling-box">
             <h1 class="text">game selector menu i guess | MBFY</h1>
         </div>
 
-        <div class="container-but">
-            <button class="cybr-btn" onclick="Move('./games/ovoT.html')"> 
-                Modded OvO<span aria-hidden>_</span>
-                <span aria-hidden class="cybr-btn__glitch">OwO OwO OwO</span>
-                <span aria-hidden class="cybr-btn__tag">v1.4.4</span>
-            </button>
-
-            <button class="cybr-btn" onclick="Move('./games/ovoT-1.4.html')">
-                Modded OvO <span aria-hidden>_</span>
-                <span aria-hidden class="cybr-btn__glitch">Old Version</span>
-                <span aria-hidden class="cybr-btn__tag">v1.4</span>
-            </button>
-
-            <button class="cybr-btn" onclick="Move('./games/skycrypt.html')">
-                ScyCrypt<span aria-hidden>_</span>
-                <span aria-hidden class="cybr-btn__glitch">made for nerds</span>
-                <span aria-hidden class="cybr-btn__tag">sky.shiiyu.moe</span>
-            </button>
-
-            <button class="cybr-btn" onclick="Move('./games/mountaingames.html')">
-                Mountain Games<span aria-hidden>_</span>
-                <span aria-hidden class="cybr-btn__glitch">This website is weird ngl</span>
-                <span aria-hidden class="cybr-btn__tag">r25</span>
-            </button>
-
-            <button class="cybr-btn" onclick="Move('https://vscode.dev/')">
-                Visual Studio Web<span aria-hidden>_</span>
-                <span aria-hidden class="cybr-btn__glitch">best code editor</span>
-                <span aria-hidden class="cybr-btn__tag">r46</span>
-            </button>
-
-            <button class="cybr-btn" onclick="Move('./games/twoplayergames.html')">
-                Two Player Games<span aria-hidden>_</span>
-                <span aria-hidden class="cybr-btn__glitch">you have friends?</span>
-                <span aria-hidden class="cybr-btn__tag">*_*</span>
-            </button>
-
-            <button class="cybr-btn" onclick="Move('./games/minesweeper.html')">
-                Minesweeper<span aria-hidden>_</span>
-                <span aria-hidden class="cybr-btn__glitch">best game ever</span>
-                <span aria-hidden class="cybr-btn__tag">online</span>
-            </button>
-
-            <!--<button class="butont" onclick="window.location.href='./games/index.html'">Placeholder</button>-->
-            <button class="cybr-btn" onclick="Move('./games/tgc.html')">
-                TGC<span aria-hidden>_</span>
-                <span aria-hidden class="cybr-btn__glitch">the game collection</span>
-                <span aria-hidden class="cybr-btn__tag">sock</span>
-            </button>
-
-            <button class="cybr-btn" onclick="Move('./games/gsearch.html')">
-                iframe search<span aria-hidden>_</span>
-                <span aria-hidden class="cybr-btn__glitch">iframe search_</span>
-                <span aria-hidden class="cybr-btn__tag">some websites dont work</span>
-            </button>
-
-            <button class="cybr-btn" onclick="Move('./games/buritobison.html')">
-                Burito Bison<span aria-hidden>_</span>
-                <span aria-hidden class="cybr-btn__glitch">zayaruzostreetorgan</span>
-                <span aria-hidden class="cybr-btn__tag">who</span>
-            </button>
-        </div>
-        </div>
+        <script>
+            AddButton("https://arjun99ab.github.io/ovo/1.4.4", "Modded OvO", "OwO OwO OwO", "v1.4.4");
+            AddButton("https://sky.shiiyu.moe/", "SkyCrypt", "made for nerds", "sky.shiiyu.moe");
+            AddButton("https://mountain658.github.io", "MountainGames", "weird website ngl", "MOUNTAIN");
+            AddButton("https://vscode.dev", "Visual Studio Code", null, "vsc", false);
+            AddButton("https://golddigger.frvr.com/", "Gold Digger FRVR", "gold n****", "fif");
+            AddButton("https://twoplayergames.org", "twoplayergames");
+            AddButton("https://tgcofficial.github.io", "TGC");
+            AddButton("https://google.com/search?igu=1", "iFrame search", null, "does not work for all websites");
+            AddButton("https://zayaruzostreetorgan.com/uploads/5/5/6/7/5567194/custom_themes/607721921917323670/burrito-bison-ll.html", "Burito Bison");
+            AddButton("https://minesweeper.online", "Minesweeper Online");
+            AddButton("https://arjun99ab.github.io/ovo/1.4", "Modded OvO", "OOOOWWWWOOOO", "v1.4 (old)");
+        </script>
     </body>
 </html>
