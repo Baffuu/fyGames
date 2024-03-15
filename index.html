@@ -8,7 +8,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
         
         <link rel="stylesheet" href="./style.css">
-        
+        <script src="./onunload.js"></script>
     </head>
     <body>
         <script>
@@ -26,16 +26,6 @@
             let isMoving = false;
             var SetIsMoving = function () { isMoving = true };
 
-            window.addEventListener("beforeunload", function (e) {
-                if (isMoving) {
-                    return undefined;
-                }
-                var confirmationMessage = '.';
-
-                (e || window.event).returnValue = confirmationMessage;
-                return confirmationMessage;
-            });
-
             var Move = function (link, iframe=true) {
                 SetIsMoving();
 
@@ -51,7 +41,7 @@
                             <title>mbfy</title>
                         </head>
                         <body> 
-                            <script src='./unload.js'><\/script>
+                            <script src='./onunload.js'><\/script>
                             <iframe src='${link}' width=100% height=100% title="box" allowfullscreen="true" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;"></iframe>
                         </body>
                     </html>
