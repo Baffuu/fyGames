@@ -58,4 +58,5 @@ AddButton("https://tgcofficial.github.io", "TGC");
 AddButton("https://zayaruzostreetorgan.com/uploads/5/5/6/7/5567194/custom_themes/607721921917323670/burrito-bison-ll.html", "Burito Bison");
 AddButton("https://minesweeper.online", "Minesweeper Online");
 AddButton("https://vscode.dev", "Visual Studio Code", null, "vsc", false);
+AddButton("https://kitsunee.me", "Kitsune", "ANIME IS MY LIFE", "anime"); 
 buttons.innerHTML += MakeButton("GoTo()", "goto", "i like to move it move it", "tag loves tagging");
