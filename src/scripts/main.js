@@ -9,7 +9,8 @@ function MakeButton(onclick, title, glitch, tag) {
 function AddButton(url, title, glitch=null, tag="R%^$", iframe=true) {
     glitch = glitch == null ? (title).split("").reverse().join(""): glitch; // if glitch was not provided, make the glitch be reversed title
     const buttons = document.getElementById("buttons");
-    buttons.innerHTML += MakeButton(`Move(${url}, ${iframe})`, title, glitch, tag);
+    console.log(url);
+    buttons.innerHTML += MakeButton((`Move('${url}', ${iframe})`), title, glitch, tag);
     return true;
 }
 
@@ -23,7 +24,7 @@ const Template = (link) => `
             <title>mbfy</title>
         </head>
         <body> 
-            <script src='./onunload.js'><\/script>
+            <script src='./src/scripts/onunload.js'><\/script>
             <iframe src='${link}' width=100% height=100% title="box" allowfullscreen="true" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;"></iframe>
         </body>
     </html>
@@ -36,7 +37,7 @@ function Move (link, iframe=true) {
         return window.open(link, "_blank");
     }
 
-    window.open("about:blank", "blank").document.write(Template(link));
+    return window.open("about:blank", "blank").document.write(Template(link));
 }
 
 function GoTo () {
