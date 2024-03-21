@@ -9,45 +9,9 @@
         
         <link rel="stylesheet" href="./style.css">
         <script src="./onunload.js"></script>
+        <script src="./style&iframe.js"></script>
     </head>
     <body>
-        <script>
-            function AddButton(url, title, glitch=null, tag="R%^$", iframe=true) {
-                glitch = glitch == null ? (title).split("").reverse().join(""): glitch; // if glitch was not provided, make the glitch be reversed title
-                const buttons = document.getElementById("buttons");
-                buttons.innerHTML += `<button class="cybr-btn" onclick="Move('${url}', ${iframe})">
-                                        ${title}<span aria-hidden>_</span>
-                                        <span aria-hidden class="cybr-btn__glitch">${glitch}</span>
-                                        <span aria-hidden class="cybr-btn__tag">${tag}</span>
-                                    </button>`;
-                return true;
-            }
-
-            let isMoving = false;
-            var SetIsMoving = function () { isMoving = true };
-
-            var Move = function (link, iframe=true) {
-                SetIsMoving();
-
-                if (!iframe){
-                    window.open(link, "_blank");
-                    return
-                }
-
-                window.open("about:blank", "blank").document.write(`
-                    <!DOCTYPE html>
-                    <html>
-                        <head>
-                            <title>mbfy</title>
-                        </head>
-                        <body> 
-                            <script src='./onunload.js'><\/script>
-                            <iframe src='${link}' width=100% height=100% title="box" allowfullscreen="true" style="border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%;"></iframe>
-                        </body>
-                    </html>
-                `)
-            }            
-        </script>
 
         <div class="purple-filling-box">
             <h1 class="text">game selector menu i guess | MBFY</h1>
@@ -57,16 +21,17 @@
         
         <script>
             AddButton("https://arjun99ab.github.io/ovo/1.4.4", "Modded OvO", "OwO OwO OwO", "v1.4.4");
+            AddButton("https://arjun99ab.github.io/ovo/1.4", "Modded OvO", "OOOOWWWWOOOO", "v1.4 (old)");
             AddButton("https://sky.shiiyu.moe/", "SkyCrypt", "made for nerds", "sky.shiiyu.moe");
             AddButton("https://mountain658.github.io", "MountainGames", "weird website ngl", "MOUNTAIN");
-            AddButton("https://vscode.dev", "Visual Studio Code", null, "vsc", false);
-            AddButton("https://golddigger.frvr.com/", "Gold Digger FRVR", "gold n****", "fif");
-            AddButton("https://twoplayergames.org", "twoplayergames");
+            AddButton("https://golddigger.frvr.com/", "Gold Digger FRVR", "gold N*****", "fif");
+            AddButton("https://twoplayergames.org", "twoplayergames", "Lonely?");
             AddButton("https://tgcofficial.github.io", "TGC");
-            AddButton("https://google.com/search?igu=1", "iFrame search", null, "does not work for all websites");
             AddButton("https://zayaruzostreetorgan.com/uploads/5/5/6/7/5567194/custom_themes/607721921917323670/burrito-bison-ll.html", "Burito Bison");
             AddButton("https://minesweeper.online", "Minesweeper Online");
-            AddButton("https://arjun99ab.github.io/ovo/1.4", "Modded OvO", "OOOOWWWWOOOO", "v1.4 (old)");
+            AddButton("https://google.com/search?igu=1", "iFrame search", null, "does not work for all websites");
+            AddButton("https://vscode.dev", "Visual Studio Code", null, "vsc", false);
+
         </script>
     </body>
 </html>
